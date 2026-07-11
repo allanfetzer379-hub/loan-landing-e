@@ -59,7 +59,7 @@
       font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
       font-size: 15px;
       color: #1a1a1a;
-      background: #f4f4f4;
+      background: #f1f3f6;
       line-height: 1.7;
     }
     a { color: inherit; text-decoration: none; }
@@ -67,19 +67,40 @@
 
     /* ===== TOP TICKER ===== */
     .ticker-wrap {
-      background: #00b900;
+      background: #081827;
       color: #fff;
       font-size: 12px;
       overflow: hidden;
       white-space: nowrap;
-      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
     }
+    .ticker-shell {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      min-height: 30px;
+      overflow: hidden;
+    }
+    .ticker-label {
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      background: #f5bd35;
+      color: #14202b;
+      font-weight: 900;
+    }
+    .ticker-viewport { min-width: 0; overflow: hidden; }
     .ticker-inner {
       display: inline-block;
-      animation: ticker 28s linear infinite;
-      padding-left: 100%;
+      animation: ticker 30s linear infinite;
+      padding-left: 45%;
     }
-    .ticker-inner span { margin-right: 60px; }
+    .ticker-inner span { margin-right: 72px; color: #edf3f7; }
     @keyframes ticker {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-100%); }
@@ -94,9 +115,9 @@
 
     /* ===== NAVBAR ===== */
     .navbar {
-      background: #fff;
-      border-bottom: 3px solid #00b900;
-      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+      background: #0f2237;
+      border-bottom: 3px solid #f5bd35;
+      box-shadow: 0 3px 12px rgba(6,20,34,.22);
     }
     .navbar-inner {
       max-width: 960px;
@@ -105,7 +126,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 16px;
-      height: 52px;
+      height: 60px;
     }
     .logo {
       display: flex;
@@ -113,15 +134,28 @@
       gap: 8px;
       font-size: 20px;
       font-weight: 900;
-      color: #00b900;
-      letter-spacing: -0.5px;
+      color: #fff;
+      letter-spacing: 0;
     }
     .logo-icon {
       width: 32px; height: 32px;
-      background: #00b900;
-      border-radius: 8px;
+      background: #f5bd35;
+      border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 18px; font-weight: 900;
+      color: #112238; font-size: 18px; font-weight: 900;
+    }
+    .logo-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.15;
+    }
+    .logo-copy strong { font-size: 18px; color: #fff; }
+    .logo-copy small {
+      margin-top: 4px;
+      color: #aebdcc;
+      font-size: 10px;
+      font-weight: 500;
     }
     .nav-links {
       display: flex;
@@ -132,23 +166,24 @@
       display: block;
       padding: 16px 14px;
       font-size: 13px;
-      color: #444;
+      color: #c7d2dc;
       font-weight: 500;
       transition: color .2s;
     }
     .nav-links li a:hover, .nav-links li.active a {
-      color: #00b900;
-      border-bottom: 2px solid #00b900;
+      color: #f5bd35;
+      border-bottom: 2px solid #f5bd35;
     }
-    .nav-right { font-size: 12px; color: #888; }
+    .nav-right { font-size: 12px; color: #b8c5d1; }
     /* ===== 手機端頂部適配 ===== */
     @media (max-width: 768px) {
       /* 跑馬燈壓縮 */
       .ticker-wrap {
         font-size: 11px !important;
-        padding: 3px 0 !important;
         line-height: 1.4 !important;
       }
+      .ticker-shell { min-height: 27px !important; }
+      .ticker-label { padding: 0 8px !important; }
       .ticker-inner span { margin-right: 40px !important; }
 
       /* 導航欄：隱藏選單與搜尋，只留 LOGO */
@@ -158,18 +193,17 @@
 
       /* 導航欄本體：去除多餘空間 */
       .navbar {
-        border-bottom: 2px solid #00b900 !important;
+        border-bottom: 2px solid #f5bd35 !important;
         box-shadow: 0 1px 4px rgba(0,0,0,.1) !important;
       }
       .navbar-inner {
-        height: 40px !important;
+        height: 48px !important;
         min-height: 0 !important;
         padding: 0 10px !important;
         justify-content: flex-start !important;
         gap: 0 !important;
       }
       .logo {
-        font-size: 14px !important;
         gap: 6px !important;
         white-space: nowrap !important;
         overflow: hidden !important;
@@ -179,12 +213,14 @@
         line-height: 1 !important;
       }
       .logo-icon {
-        width: 26px !important;
-        height: 26px !important;
-        font-size: 13px !important;
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 15px !important;
         flex-shrink: 0 !important;
         border-radius: 6px !important;
       }
+      .logo-copy strong { font-size: 14px !important; }
+      .logo-copy small { font-size: 9px !important; margin-top: 3px !important; }
     }
 
     /* ===== LAYOUT ===== */
@@ -208,7 +244,7 @@
       margin-bottom: 12px;
     }
     .breadcrumb span { margin: 0 4px; }
-    .breadcrumb a { color: #00b900; }
+    .breadcrumb a { color: #0b7252; }
 
     /* ===== HERO / ARTICLE ===== */
     .article-card {
@@ -319,9 +355,9 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #eafbea;
-      color: #087b28;
-      border: 1px solid #a8e4b2;
+      background: #edf1f5;
+      color: #14314b;
+      border: 1px solid #cbd5df;
       border-radius: 999px;
       padding: 5px 10px;
       font-size: 12px;
@@ -339,17 +375,18 @@
       margin: 14px 0;
     }
     .e-punch-card {
-      background: #0bbf36;
+      background: #0f2237;
       color: #fff;
       border-radius: 8px;
       padding: 10px 8px;
       text-align: center;
-      box-shadow: 0 8px 18px rgba(0, 120, 0, .18);
+      box-shadow: 0 8px 18px rgba(10, 31, 50, .16);
     }
     .e-punch-card strong {
       display: block;
       font-size: 17px;
       line-height: 1.2;
+      color: #f5c24a;
     }
     .e-punch-card span {
       display: block;
@@ -391,7 +428,7 @@
     .e-hero-media {
       border-radius: 10px;
       overflow: hidden;
-      background: #0e8f24;
+      background: #0f2237;
       min-height: 280px;
       position: relative;
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.24);
@@ -430,7 +467,7 @@
       border: 2px solid rgba(255, 207, 47, .9);
     }
     .e-money-alert .money-status {
-      color: #00a12b;
+      color: #0b7252;
       font-size: 12px;
       font-weight: 900;
       margin-bottom: 2px;
@@ -439,7 +476,7 @@
       font-size: 28px;
       line-height: 1.05;
       font-weight: 900;
-      color: #0a7f24;
+      color: #0b7252;
       letter-spacing: 0;
     }
     .e-money-alert .money-sub {
@@ -463,8 +500,8 @@
     }
     .e-alert-strip strong { color: #0b7d23; }
     .e-alert-label {
-      background: #00b900;
-      color: #fff;
+      background: #0f2237;
+      color: #f5c24a;
       border-radius: 999px;
       padding: 4px 9px;
       font-size: 11px;
@@ -495,15 +532,15 @@
       margin: 18px 0 22px;
     }
     .e-amount-card {
-      border: 1px solid #d8efd9;
-      border-left: 5px solid #00b900;
-      background: #fbfffb;
+      border: 1px solid #d9e1e7;
+      border-left: 5px solid #0b7252;
+      background: #fbfcfd;
       border-radius: 8px;
       padding: 12px;
     }
     .e-amount-card b {
       display: block;
-      color: #087b28;
+      color: #0b7252;
       font-size: 18px;
       margin-bottom: 4px;
     }
@@ -514,7 +551,7 @@
       line-height: 1.55;
     }
     .e-pullquote {
-      background: #0a8e28;
+      background: #0f2237;
       color: #fff;
       border-radius: 10px;
       padding: 16px 18px;
@@ -522,7 +559,7 @@
       font-size: 17px;
       font-weight: 900;
       line-height: 1.55;
-      box-shadow: 0 10px 24px rgba(0, 120, 0, .22);
+      box-shadow: 0 10px 24px rgba(10, 31, 50, .2);
     }
     .e-process {
       display: grid;
@@ -531,15 +568,15 @@
       margin: 18px 0 22px;
     }
     .e-process-card {
-      background: #f6fff6;
-      border: 1px solid #cceccd;
+      background: #f7f9fb;
+      border: 1px solid #d7e0e7;
       border-radius: 8px;
       padding: 12px;
       min-height: 112px;
     }
     .e-process-card b {
       display: block;
-      color: #008f20;
+      color: #0b7252;
       font-size: 14px;
       margin-bottom: 5px;
     }
@@ -549,7 +586,7 @@
       line-height: 1.55;
     }
     .e-form-lead {
-      background: #071b0d;
+      background: #0f2237;
       color: #fff;
       border-radius: 10px;
       padding: 16px 18px;
@@ -560,7 +597,7 @@
     }
     .e-form-lead strong {
       display: block;
-      color: #7dff91;
+      color: #f5c24a;
       font-size: 18px;
       margin-bottom: 4px;
     }
@@ -617,7 +654,7 @@
     }
     .compare-table th:first-child { background: #f5f5f5; color: #555; }
     .compare-table th:nth-child(2) { background: #e8e8e8; color: #c00; }
-    .compare-table th:nth-child(3) { background: #00b900; color: #fff; }
+    .compare-table th:nth-child(3) { background: #0b7252; color: #fff; }
     .compare-table td {
       padding: 10px 12px;
       border-bottom: 1px solid #eee;
@@ -626,18 +663,18 @@
     }
     .compare-table td:first-child { background: #fafafa; font-weight: 700; color: #555; text-align: center; }
     .compare-table td:nth-child(2) { color: #c00; text-align: center; }
-    .compare-table td:nth-child(3) { color: #007a00; font-weight: 600; text-align: center; }
-    .compare-table tr:hover td { background: #f9fff9; }
+    .compare-table td:nth-child(3) { color: #0b7252; font-weight: 600; text-align: center; }
+    .compare-table tr:hover td { background: #f7faf9; }
 
     /* ===== QUIZ FORM SECTION ===== */
     .quiz-section {
-      background: linear-gradient(135deg, #00b900 0%, #009900 100%);
-      border-radius: 10px;
+      background: linear-gradient(145deg, #0f2237 0%, #173a50 100%);
+      border-radius: 8px;
       padding: 24px 20px;
       margin: 28px 0;
       color: #fff;
-      border: 3px solid #fff;
-      box-shadow: 0 10px 28px rgba(0, 120, 0, .28);
+      border: 1px solid #28465d;
+      box-shadow: 0 14px 34px rgba(8,24,39,.24);
     }
     @media (max-width: 480px) {
       .quiz-section { padding: 18px 14px; border-radius: 8px; }
@@ -659,19 +696,19 @@
       opacity: .9;
     }
     .quiz-attention {
-      background: #fff;
-      color: #087b28;
-      border-radius: 8px;
+      background: linear-gradient(135deg, #f8cc54, #f3b321);
+      color: #14202b;
+      border-radius: 6px;
       padding: 12px 14px;
       margin-bottom: 16px;
       text-align: center;
       font-size: 16px;
       font-weight: 900;
-      box-shadow: 0 5px 14px rgba(0,0,0,.18);
+      box-shadow: 0 8px 20px rgba(245,189,53,.2);
     }
     .quiz-attention small {
       display: block;
-      color: #42634b;
+      color: #4a3b16;
       font-size: 12px;
       font-weight: 700;
       margin-top: 4px;
@@ -679,7 +716,7 @@
 
     /* Progress Bar */
     .progress-wrap {
-      background: rgba(255,255,255,.25);
+      background: rgba(255,255,255,.14);
       border-radius: 20px;
       height: 8px;
       margin-bottom: 6px;
@@ -687,7 +724,7 @@
     }
     .progress-bar {
       height: 100%;
-      background: #fff;
+      background: linear-gradient(90deg, #f5bd35, #f8d56f);
       border-radius: 20px;
       transition: width .4s ease;
       width: 33%;
@@ -712,8 +749,9 @@
       gap: 6px;
     }
     .step-badge {
-      background: rgba(255,255,255,.3);
-      border-radius: 50%;
+      background: #f5bd35;
+      color: #14202b;
+      border-radius: 5px;
       width: 22px; height: 22px;
       display: inline-flex; align-items: center; justify-content: center;
       font-size: 12px; font-weight: 900;
@@ -724,7 +762,8 @@
       border-radius: 12px;
       padding: 16px;
       margin-bottom: 16px;
-      border: 2px solid rgba(255,255,255,.95);
+      border: 1px solid #dbe3e9;
+      border-top: 4px solid #f5bd35;
       box-shadow: 0 8px 20px rgba(0,0,0,.18);
     }
     .estimate-card .estimate-label {
@@ -734,7 +773,7 @@
       margin-bottom: 6px;
     }
     .estimate-card .estimate-amount {
-      color: #008f26;
+      color: #0b7252;
       font-size: 28px;
       font-weight: 900;
       line-height: 1.15;
@@ -752,8 +791,8 @@
       margin-top: 12px;
     }
     .estimate-tags span {
-      background: #e9f9ed;
-      color: #008f26;
+      background: #eaf3f0;
+      color: #0b7252;
       border-radius: 999px;
       padding: 5px 9px;
       font-size: 12px;
@@ -774,10 +813,10 @@
       .options-grid { grid-template-columns: 1fr; }
     }
     .option-btn {
-      background: rgba(255,255,255,.22);
-      border: 2px solid rgba(255,255,255,.7);
-      border-radius: 8px;
-      color: #fff;
+      background: #fff;
+      border: 2px solid #d7e0e7;
+      border-radius: 6px;
+      color: #172b3d;
       font-size: 14px;
       font-weight: 800;
       padding: 13px 12px;
@@ -790,24 +829,25 @@
       -webkit-tap-highlight-color: transparent;
     }
     .option-btn:hover, .option-btn.selected {
-      background: rgba(255,255,255,.35);
-      border-color: #fff;
+      background: #e9f4f0;
+      border-color: #24a377;
+      box-shadow: inset 4px 0 0 #0b7252;
     }
     .option-icon {
       width: 18px; height: 18px;
-      border: 2px solid rgba(255,255,255,.7);
+      border: 2px solid #78909f;
       border-radius: 50%;
       flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
     }
     .option-btn.selected .option-icon {
       background: #fff;
-      border-color: #fff;
+      border-color: #0b7252;
     }
     .option-btn.selected .option-icon::after {
       content: '';
       width: 8px; height: 8px;
-      background: #00b900;
+      background: #0b7252;
       border-radius: 50%;
       display: block;
     }
@@ -827,10 +867,10 @@
       opacity: .9;
     }
     .form-group input, .form-group select {
-      background: rgba(255,255,255,.15);
-      border: 1.5px solid rgba(255,255,255,.5);
+      background: #fff;
+      border: 1.5px solid #cbd6df;
       border-radius: 6px;
-      color: #fff;
+      color: #172b3d;
       font-size: 14px;
       padding: 10px 12px;
       outline: none;
@@ -839,13 +879,14 @@
       font-family: inherit;
       -webkit-appearance: none;
     }
-    .form-group input::placeholder { color: rgba(255,255,255,.6); }
+    .form-group input::placeholder { color: #8796a4; }
     .form-group input:focus, .form-group select:focus {
-      border-color: #fff;
-      background: rgba(255,255,255,.25);
+      border-color: #f5bd35;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(245,189,53,.18);
     }
     .form-group select { appearance: none; cursor: pointer; }
-    .form-group select option { background: #007a00; color: #fff; }
+    .form-group select option { background: #fff; color: #172b3d; }
     .id-hint {
       font-size: 11px;
       opacity: .75;
@@ -855,8 +896,8 @@
     /* CTA Button */
     .cta-btn {
       width: 100%;
-      background: #fff;
-      color: #00b900;
+      background: linear-gradient(135deg, #f8cc54, #f3b321);
+      color: #14202b;
       font-size: 16px;
       font-weight: 900;
       padding: 15px;
@@ -869,12 +910,12 @@
       box-shadow: 0 4px 12px rgba(0,0,0,.2);
       -webkit-tap-highlight-color: transparent;
     }
-    .cta-btn:hover { background: #f0fff0; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+    .cta-btn:hover { background: #ffd568; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
     .cta-btn:active { transform: scale(.98); }
     .next-btn {
-      background: #fff;
-      border: 2px solid #fff;
-      color: #008b25;
+      background: linear-gradient(135deg, #f8cc54, #f3b321);
+      border: 2px solid #ffe29a;
+      color: #14202b;
       font-size: 16px;
       font-weight: 900;
       padding: 14px 24px;
@@ -886,7 +927,17 @@
       width: 100%;
       -webkit-tap-highlight-color: transparent;
     }
-    .next-btn:hover { background: #efffef; }
+    .next-btn:hover { background: #ffd568; }
+    .form-intro {
+      background: #f5f7f9;
+      color: #172b3d;
+      border-left: 4px solid #f5bd35;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
     .ssl-badge {
       text-align: center;
       font-size: 11px;
@@ -1030,30 +1081,38 @@
     /* ===== COMMENTS SECTION ===== */
     .comments-section {
       background: #fff;
-      border-radius: 4px;
-      padding: 20px 20px;
+      border-radius: 6px;
+      padding: 0 20px 8px;
       margin-top: 20px;
-      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      border-top: 4px solid #0f2237;
+      box-shadow: 0 4px 18px rgba(15,34,55,.08);
     }
     @media (max-width: 480px) {
       .comments-section { padding: 14px 14px; }
     }
     .comments-title {
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 800;
-      color: #111;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #00b900;
+      color: #0f2237;
+      padding: 16px 0 13px;
+      border-bottom: 1px solid #dfe5ea;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .comments-title small {
+      color: #748291;
+      font-size: 11px;
+      font-weight: 500;
+      text-align: right;
     }
     .comment-item {
-      display: flex;
-      gap: 12px;
-      padding: 14px 0;
-      border-bottom: 1px solid #f0f0f0;
+      display: grid;
+      grid-template-columns: 66px minmax(0, 1fr);
+      gap: 14px;
+      padding: 17px 0;
+      border-bottom: 1px solid #e7ebef;
     }
     .comment-item:last-child { border-bottom: none; }
     .avatar-placeholder {
@@ -1081,23 +1140,28 @@
       margin-bottom: 2px;
     }
     .comment-name span { color: #888; font-weight: 400; font-size: 12px; margin-left: 6px; }
-    .lead-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      flex-shrink: 0;
+    .consultation-mark {
+      width: 66px;
+      min-height: 58px;
+      border-radius: 6px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #07c941, #087b28);
-      color: #fff;
-      font-size: 18px;
-      font-weight: 900;
-      box-shadow: 0 8px 18px rgba(0,120,0,.18);
+      background: #edf2f5;
+      color: #0f2237;
+      border-left: 4px solid #0b7252;
     }
-    .lead-avatar.alt { background: linear-gradient(135deg, #15b8a6, #086b5e); }
-    .lead-avatar.warn { background: linear-gradient(135deg, #f59e0b, #b45309); }
-    .lead-avatar.blue { background: linear-gradient(135deg, #38bdf8, #0369a1); }
+    .consultation-mark span {
+      font-size: 17px;
+      font-weight: 900;
+    }
+    .consultation-mark small {
+      margin-top: 2px;
+      color: #0b7252;
+      font-size: 10px;
+      font-weight: 800;
+    }
     .comment-tags {
       display: flex;
       flex-wrap: wrap;
@@ -1109,9 +1173,9 @@
       align-items: center;
       border-radius: 999px;
       padding: 2px 8px;
-      background: #ecfff0;
-      color: #087b28;
-      border: 1px solid #b9efc2;
+      background: #edf5f2;
+      color: #0b7252;
+      border: 1px solid #c5ddd4;
       font-size: 11px;
       font-weight: 800;
     }
@@ -1122,17 +1186,17 @@
     }
     .comment-text {
       font-size: 13px;
-      color: #444;
+      color: #3f4c58;
       line-height: 1.65;
       margin-bottom: 8px;
-      word-break: break-all;
+      word-break: break-word;
     }
     .comment-footer {
       display: flex;
       align-items: center;
       gap: 14px;
       font-size: 12px;
-      color: #aaa;
+      color: #8995a1;
     }
     .like-btn {
       display: flex; align-items: center; gap: 4px;
@@ -1143,6 +1207,13 @@
     }
     .like-btn:hover, .like-btn.liked { color: #00b900; }
     .time-stamp { color: #bbb; }
+    @media (max-width: 480px) {
+      .comments-title { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .comments-title small { text-align: left; }
+      .comment-item { grid-template-columns: 52px minmax(0, 1fr); gap: 10px; }
+      .consultation-mark { width: 52px; min-height: 54px; }
+      .comment-name span { display: block; margin: 2px 0 0; }
+    }
 
     /* ===== SIDEBAR ===== */
     .sidebar-card {
@@ -1500,12 +1571,14 @@
 
 <!-- TICKER -->
 <div class="ticker-wrap">
-  <div class="ticker-inner">
-    <span>🛡️【全民防詐安全專題】銀行不借也別放棄，先看你有沒有機會拿到錢</span>
-    <span>💰 缺 10 萬到 100 萬，先選金額讓專員確認能不能談</span>
-    <span>✅ 有房貸、車貸、信貸也別急著放棄，先把額度機會抓出來</span>
-    <span>📱 鴻賜資產管理有限公司專員優先透過 LINE 協助確認可談方向</span>
-    <span>⏰ 今日已有 <span id="ticker-count2">1,247</span> 人送出額度需求</span>
+  <div class="ticker-shell">
+    <span class="ticker-label">即時焦點</span>
+    <div class="ticker-viewport">
+      <div class="ticker-inner">
+        <span>缺 10 萬至 100 萬周轉？有信貸、車貸、房貸，也可先確認可談方向</span>
+        <span>安全提醒：透過正式額度流程確認方案，勿輕信來源不明的借款簡訊</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1514,7 +1587,10 @@
   <div class="navbar-inner">
     <div class="logo">
       <div class="logo-icon">富</div>
-      鴻賜資產管理有限公司・財經TODAY
+      <div class="logo-copy">
+        <strong>民生財經觀察</strong>
+        <small>鴻賜資產管理有限公司 提供額度服務</small>
+      </div>
     </div>
     <ul class="nav-links">
       <li><a href="#">首頁</a></li>
@@ -1778,7 +1854,7 @@
               <span>資料加密送出</span>
             </div>
           </div>
-          <div style="background:rgba(255,255,255,.15);border-radius:8px;padding:12px 14px;margin-bottom:16px;font-size:13px;line-height:1.6;">
+          <div class="form-intro">
             🎉 <strong>【鴻賜資產管理有限公司・額度需求已建立】</strong>請填寫以下真實資訊以完成名額登記。送出後，鴻賜資產管理有限公司專員將優先透過 LINE 與您確認可談方案與後續資料。
           </div>
 
@@ -1872,61 +1948,54 @@
     <!-- COMMENTS -->
     <section class="comments-section">
       <div class="comments-title">
-        💬 近期額度回報 <span style="font-size:12px;color:#aaa;font-weight:400;">（<span id="total-comments">412</span> 則）</span>
+        <span>近期額度諮詢紀要</span>
+        <small>依近期諮詢內容整理，實際方案以專員確認為準</small>
       </div>
 
       <div class="comment-item">
-        <div class="lead-avatar">廖</div>
+        <div class="consultation-mark"><span>01</span><small>已聯繫</small></div>
         <div class="comment-body">
           <div class="comment-name">廖*誠 <span>39歲・桃園市</span></div>
-          <div class="comment-tags"><span class="comment-tag money">需求 30萬-50萬</span><span class="comment-tag">LINE 已確認</span></div>
-          <p class="comment-text">「我本來以為有車貸就不用問了，結果先選金額送出後，專員直接跟我確認資料。至少不是一直叫我等銀行，是真的有幫我看還能不能談。」</p>
+          <div class="comment-tags"><span class="comment-tag money">需求 30萬-50萬</span><span class="comment-tag">名下有車貸</span></div>
+          <p class="comment-text">需求摘要：原本擔心已有車貸就無法再處理，送出金額與基本條件後，已由專員透過 LINE 確認可談方向。</p>
           <div class="comment-footer">
-            <button class="like-btn" onclick="toggleLike(this, 168)">👍 <span class="like-num">168</span></button>
-            <span>已回報</span>
-            <span class="time-stamp">36分鐘前</span>
+            <span>進度：基本資料已確認</span>
           </div>
         </div>
       </div>
 
       <div class="comment-item">
-        <div class="lead-avatar alt">許</div>
+        <div class="consultation-mark"><span>02</span><small>確認中</small></div>
         <div class="comment-body">
           <div class="comment-name">許*婷 <span>32歲・新北市</span></div>
           <div class="comment-tags"><span class="comment-tag money">需求 20萬-30萬</span><span class="comment-tag">有信貸</span></div>
-          <p class="comment-text">「銀行問到薪轉就卡住，我只是想先知道自己能不能借到錢。填完 LINE 很快有人回，會先問需求金額跟帳戶狀態，比我自己亂找快很多。」</p>
+          <p class="comment-text">需求摘要：銀行申請卡在收入資料，希望先了解其他周轉方向，目前已完成需求金額與帳戶狀態確認。</p>
           <div class="comment-footer">
-            <button class="like-btn" onclick="toggleLike(this, 121)">👍 <span class="like-num">121</span></button>
-            <span>已回報</span>
-            <span class="time-stamp">1小時前</span>
+            <span>進度：專員確認條件中</span>
           </div>
         </div>
       </div>
 
       <div class="comment-item">
-        <div class="lead-avatar warn">郭</div>
+        <div class="consultation-mark"><span>03</span><small>已分類</small></div>
         <div class="comment-body">
           <div class="comment-name">郭*霖 <span>47歲・台中市</span></div>
           <div class="comment-tags"><span class="comment-tag money">需求 50萬以上</span><span class="comment-tag">房貸中</span></div>
-          <p class="comment-text">「我缺的金額比較高，本來覺得一定沒機會。這邊不是叫我亂送銀行，而是先把條件整理起來，專員再跟我講哪裡可以談，這點有差。」</p>
+          <p class="comment-text">需求摘要：所需金額較高且名下已有房貸，資料先依負債與金額分類，再由專員說明可進一步確認的方向。</p>
           <div class="comment-footer">
-            <button class="like-btn" onclick="toggleLike(this, 87)">👍 <span class="like-num">87</span></button>
-            <span>已回報</span>
-            <span class="time-stamp">今天上午</span>
+            <span>進度：需求條件已分類</span>
           </div>
         </div>
       </div>
 
       <div class="comment-item">
-        <div class="lead-avatar blue">周</div>
+        <div class="consultation-mark"><span>04</span><small>當日回覆</small></div>
         <div class="comment-body">
           <div class="comment-name">周*如 <span>51歲・高雄市</span></div>
           <div class="comment-tags"><span class="comment-tag money">需求 10萬-20萬</span><span class="comment-tag">當日聯繫</span></div>
-          <p class="comment-text">「我只是臨時需要一筆錢週轉，不想再被銀行拖時間。先選金額後送出，專員用 LINE 跟我確認，整個流程比較像有人真的在處理。」</p>
+          <p class="comment-text">需求摘要：臨時有一筆短期周轉需求，先選擇金額並留下 LINE，後續由專員確認資料與可談方案。</p>
           <div class="comment-footer">
-            <button class="like-btn" onclick="toggleLike(this, 73)">👍 <span class="like-num">73</span></button>
-            <span>已回報</span>
-            <span class="time-stamp">昨天</span>
+            <span>進度：已安排 LINE 聯繫</span>
           </div>
         </div>
       </div>
