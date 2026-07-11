@@ -368,13 +368,20 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: #00b900;
-      color: #fff;
-      border-radius: 6px;
-      padding: 10px 16px;
-      font-size: 14px;
+      background: linear-gradient(135deg, #ffcf2f 0%, #ff9f0a 54%, #ff7a00 100%);
+      color: #161100;
+      border: 2px solid #fff1a8;
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-size: 16px;
       font-weight: 900;
-      box-shadow: 0 8px 18px rgba(0, 120, 0, .22);
+      box-shadow: 0 14px 30px rgba(255, 139, 0, .34), 0 0 0 4px rgba(255, 207, 47, .18);
+      min-height: 50px;
+      animation: ctaGlow 1.6s ease-in-out infinite;
+    }
+    @keyframes ctaGlow {
+      0%, 100% { transform: translateY(0); box-shadow: 0 14px 30px rgba(255, 139, 0, .34), 0 0 0 4px rgba(255, 207, 47, .18); }
+      50% { transform: translateY(-1px); box-shadow: 0 18px 36px rgba(255, 139, 0, .48), 0 0 0 7px rgba(255, 207, 47, .24); }
     }
     .e-safe-note {
       color: #5a6a5d;
@@ -409,6 +416,37 @@
       font-size: 13px;
       line-height: 1.45;
       box-shadow: 0 8px 22px rgba(0,0,0,.2);
+    }
+    .e-money-alert {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      width: min(250px, calc(100% - 24px));
+      background: rgba(255,255,255,.96);
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: #102115;
+      box-shadow: 0 12px 28px rgba(0,0,0,.24);
+      border: 2px solid rgba(255, 207, 47, .9);
+    }
+    .e-money-alert .money-status {
+      color: #00a12b;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 2px;
+    }
+    .e-money-alert .money-amount {
+      font-size: 28px;
+      line-height: 1.05;
+      font-weight: 900;
+      color: #0a7f24;
+      letter-spacing: 0;
+    }
+    .e-money-alert .money-sub {
+      margin-top: 5px;
+      font-size: 12px;
+      color: #5f4a00;
+      font-weight: 800;
     }
     .e-alert-strip {
       display: grid;
@@ -1190,15 +1228,15 @@
       display: none;
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      background: #00b900;
-      color: #fff;
+      background: linear-gradient(135deg, #ffcf2f 0%, #ff9700 100%);
+      color: #151000;
       text-align: center;
       padding: 17px 16px;
       font-size: 16px;
       font-weight: 900;
       z-index: 1000;
       cursor: pointer;
-      box-shadow: 0 -3px 12px rgba(0,0,0,.2);
+      box-shadow: 0 -5px 18px rgba(255, 139, 0, .42);
       -webkit-tap-highlight-color: transparent;
     }
     @media (max-width: 768px) {
@@ -1515,13 +1553,18 @@
             <div class="e-punch-card"><strong>1分鐘送出</strong><span>LINE專員接著確認</span></div>
           </div>
           <div class="e-hero-actions">
-            <a href="#quiz-section" class="e-primary-link">馬上看我能不能拿到錢</a>
+            <a href="#quiz-section" class="e-primary-link">立刻查看您的專屬額度</a>
             <span class="e-safe-note">先選金額，專員透過 LINE 協助確認</span>
           </div>
         </div>
         <div class="e-hero-media">
           <img src="hero-approved.png" alt="民眾收到額度確認訊息後感到放心" />
-          <div class="e-media-badge">缺錢不要只等銀行一句話，先看自己還有沒有額度機會。</div>
+          <div class="e-money-alert">
+            <div class="money-status">額度通知</div>
+            <div class="money-amount">NT$500,000</div>
+            <div class="money-sub">已完成入帳示意｜最高 100 萬可談</div>
+          </div>
+          <div class="e-media-badge">缺錢不要只等銀行一句話，最高 100 萬先看自己還有沒有額度機會。</div>
         </div>
       </section>
 
@@ -1925,7 +1968,7 @@
 
 <!-- FLOATING CTA (mobile) -->
 <div class="float-cta" onclick="scrollToForm()">
-  👉 先選金額，看我能不能拿到錢
+  💰 最高100萬｜立即查看可拿額度
 </div>
 
 <!-- MODAL -->
