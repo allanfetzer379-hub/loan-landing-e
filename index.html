@@ -1063,6 +1063,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      touch-action: manipulation;
       margin-top: 16px;
       transition: all .2s;
       letter-spacing: 0.5px;
@@ -1472,6 +1473,8 @@
     @media (max-width: 768px) {
       .float-cta { display: block; }
       body { padding-bottom: 56px; }
+      body.application-step-active .float-cta { display: none; }
+      body.application-step-active { padding-bottom: 0; }
     }
 
     /* ===== URGENCY BANNER ===== */
@@ -1661,10 +1664,12 @@
       .quiz-section .quiz-header p,
       .question-text,
       .option-btn,
-      .form-group label,
+      .form-group label {
+        font-size: 14px;
+      }
       .form-group input,
       .form-group select {
-        font-size: 14px;
+        font-size: 16px;
       }
       .options-grid,
       .form-grid {
@@ -2510,6 +2515,7 @@ function nextStep(from) {
   var next = from + 1;
   document.getElementById('step-' + next).classList.add('active');
   currentStep = next;
+  if (next === 3) document.body.classList.add('application-step-active');
   updateProgress(next);
   if (next === 3) updateEstimateCard();
   document.getElementById('quiz-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2649,6 +2655,10 @@ async function submitLeadPayload(payload) {
 // ============================================================
 async function submitForm(e) {
   e.preventDefault();
+
+  if (document.activeElement && document.activeElement !== document.body) {
+    document.activeElement.blur();
+  }
 
   var name   = document.getElementById('f-name').value.trim();
   var age    = document.getElementById('f-age').value.trim();
