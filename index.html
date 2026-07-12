@@ -1720,7 +1720,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="line-theme.css?v=4" />
+  <link rel="stylesheet" href="line-theme.css?v=5" />
 </head>
 <body>
 
@@ -1936,20 +1936,25 @@
             <span class="step-badge">1</span> 先選擇您想申請的金額
           </div>
 
-          <div class="question-block">
-            <p class="question-text">Q1. 您目前最需要試算的周轉金額是？</p>
+          <div class="question-block amount-choice-panel">
+            <p class="question-text">先選您這次需要多少周轉金額</p>
+            <p class="amount-choice-hint">點選金額後，系統會自動進入下一步</p>
             <div class="options-grid">
               <button class="option-btn" data-q="q3" data-v="10萬-20萬" onclick="selectAmountAndContinue(this)">
-                <span class="option-icon"></span> 10萬 – 20萬
+                <span class="option-icon"></span>
+                <span class="amount-option-copy"><strong>10萬 – 20萬</strong><small>日常周轉需求</small></span>
               </button>
               <button class="option-btn" data-q="q3" data-v="20萬-30萬" onclick="selectAmountAndContinue(this)">
-                <span class="option-icon"></span> 20萬 – 30萬
+                <span class="option-icon"></span>
+                <span class="amount-option-copy"><strong>20萬 – 30萬</strong><small>中短期周轉</small></span>
               </button>
               <button class="option-btn" data-q="q3" data-v="30萬-50萬" onclick="selectAmountAndContinue(this)">
-                <span class="option-icon"></span> 30萬 – 50萬
+                <span class="option-icon"></span>
+                <span class="amount-option-copy"><strong>30萬 – 50萬</strong><small>較高額周轉</small></span>
               </button>
               <button class="option-btn" data-q="q3" data-v="50萬以上" onclick="selectAmountAndContinue(this)">
-                <span class="option-icon"></span> 50萬以上
+                <span class="option-icon"></span>
+                <span class="amount-option-copy"><strong>50萬以上</strong><small>高額資金需求</small></span>
               </button>
             </div>
           </div>
@@ -2849,6 +2854,21 @@ function scrollToForm() {
 // ============================================================
 var tickerInner = document.querySelector('.ticker-inner');
 if (tickerInner) { tickerInner.innerHTML += tickerInner.innerHTML; }
+
+var amountChoicePanel = document.querySelector('.amount-choice-panel');
+if (amountChoicePanel) {
+  if ('IntersectionObserver' in window) {
+    var amountPanelObserver = new IntersectionObserver(function(entries, observer) {
+      if (entries.some(function(entry) { return entry.isIntersecting; })) {
+        amountChoicePanel.classList.add('attention-once');
+        observer.disconnect();
+      }
+    }, { threshold: 0.45 });
+    amountPanelObserver.observe(amountChoicePanel);
+  } else {
+    amountChoicePanel.classList.add('attention-once');
+  }
+}
 </script>
 
 </body>
