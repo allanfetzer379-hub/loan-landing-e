@@ -1720,7 +1720,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="line-theme.css?v=3" />
+  <link rel="stylesheet" href="line-theme.css?v=4" />
 </head>
 <body>
 
@@ -1794,7 +1794,7 @@
             <div class="e-punch-card"><strong>1分鐘完成</strong><span>LINE專員協助確認</span></div>
           </div>
           <div class="e-hero-actions">
-            <a href="#quiz-section" class="e-primary-link">立即試算可申請額度</a>
+            <a href="#quiz-section" class="e-primary-link">立即查看我的可申請額度</a>
             <span class="e-safe-note">先選金額，免費完成初步試算</span>
           </div>
         </div>
@@ -2085,7 +2085,7 @@
                 <span class="id-hint">重要：專員將優先透過 LINE 確認核貸額度</span>
               </div>
             </div>
-            <button type="submit" class="cta-btn" id="application-submit-btn">完成額度申請</button>
+            <button type="submit" class="cta-btn" id="application-submit-btn">立即送出資料，確認額度</button>
           </form>
           <div class="ssl-badge">🔒 長原資產管理有限公司嚴格遵守《個人資料保護法》，256-bit SSL 加密傳輸，絕不洩漏個資，不影響聯徵紀錄。</div>
         </div>
@@ -2122,7 +2122,7 @@
             <!-- ⚠️ 請將下方 href 替換為您的企業 LINE 連結，例如 https://line.me/R/ti/p/@xxxxxxxx -->
             <a href="https://line.me/R/ti/p/@111tfmeq" target="_blank" class="line-add-btn" id="line-add-btn" onclick="trackLineClick()">
               <span class="line-logo">L</span>
-              立即加入 LINE 與專員溝通
+              立即加入 LINE 與專員確認
             </a>
             <div class="line-id-display">
               LINE ID：<strong id="line-official-id">@111tfmeq</strong>（請複製搜尋加入）
@@ -2225,7 +2225,7 @@
 
 <!-- FLOATING CTA (mobile) -->
 <div class="float-cta" onclick="scrollToForm()">
-  缺10萬到100萬｜立即申請額度
+  立即查看可申請額度
 </div>
 
 <!-- MODAL -->
@@ -2529,7 +2529,7 @@ function updateEstimateCard() {
   var title = document.getElementById('application-form-title');
   if (title) title.textContent = '您的 ' + amount + ' 額度申請已建立';
   var submit = document.getElementById('application-submit-btn');
-  if (submit) submit.textContent = '完成 ' + amount + ' 額度申請';
+  if (submit) submit.textContent = '立即送出資料，確認 ' + amount + ' 額度';
   renderApplicationSummary();
   updateFormProgress();
 }
@@ -2592,8 +2592,8 @@ function updateFormProgress() {
   if (bar) bar.style.width = (fields.length ? Math.round(completed / fields.length * 100) : 0) + '%';
   if (submit && !submit.disabled) {
     submit.textContent = completed === fields.length
-      ? ('資料已完整｜立即完成 ' + amount + ' 申請')
-      : ('完成 ' + amount + ' 額度申請');
+      ? ('資料已完整｜立即確認 ' + amount + ' 額度')
+      : ('立即送出資料，確認 ' + amount + ' 額度');
   }
 }
 
